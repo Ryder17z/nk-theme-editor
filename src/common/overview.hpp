@@ -1,76 +1,4 @@
 //#include "../gui/nuklear.h"
-void ColorPicker22(struct nk_context* ctx)
-{
-    static char textrgb[4][8];
-    nk_layout_row_dynamic(ctx, 20, 1);
-    static nk_colorf combo_color2;
-    static bool hex_edit_active = false;
-    if (nk_combo_begin_color(ctx, nk_rgb_cf(combo_color2), nk_vec2(200, 500))) {
-        static char hexstring[7];
-        int hexlen = 6;
-        enum color_mode { COL_RGB, COL_HSV };
-        static int col_mode = COL_RGB;
-//#ifndef DEMO_DO_NOT_USE_COLOR_PICKER§
-        nk_layout_row_dynamic(ctx, 120, 1);
-        combo_color2 = nk_color_picker(ctx, combo_color2, NK_RGBA);
-//#endif
-
-        nk_layout_row_dynamic(ctx, 25, 2);
-        //col_mode = nk_option_label(ctx, "RGB", col_mode == COL_RGB) ? COL_RGB : col_mode;
-        //col_mode = nk_option_label(ctx, "HSV", col_mode == COL_HSV) ? COL_HSV : col_mode;
-
-        nk_layout_row_dynamic(ctx, 25, 1);
-        if (col_mode == COL_RGB) {
-            combo_color2.r = nk_propertyf(ctx, "#R:", 0, combo_color2.r, 1.0f, 0.01f, 0.005f);
-            combo_color2.g = nk_propertyf(ctx, "#G:", 0, combo_color2.g, 1.0f, 0.01f, 0.005f);
-            combo_color2.b = nk_propertyf(ctx, "#B:", 0, combo_color2.b, 1.0f, 0.01f, 0.005f);
-            combo_color2.a = nk_propertyf(ctx, "#A:", 0, combo_color2.a, 1.0f, 0.01f, 0.005f);
-        }
-        else {
-            float hsva[4];
-            nk_colorf_hsva_fv(hsva, combo_color2);
-            hsva[0] = nk_propertyf(ctx, "#H:", 0, hsva[0], 1.0f, 0.01f, 0.05f);
-            hsva[1] = nk_propertyf(ctx, "#S:", 0, hsva[1], 1.0f, 0.01f, 0.05f);
-            hsva[2] = nk_propertyf(ctx, "#V:", 0, hsva[2], 1.0f, 0.01f, 0.05f);
-            hsva[3] = nk_propertyf(ctx, "#A:", 0, hsva[3], 1.0f, 0.01f, 0.05f);
-            combo_color2 = nk_hsva_colorfv(hsva);
-        }
-
-        sprintf(textrgb[0], "%0.0f", combo_color2.r * 255.0f);
-        sprintf(textrgb[1], "%0.0f", combo_color2.g * 255.0f);
-        sprintf(textrgb[2], "%0.0f", combo_color2.b * 255.0f);
-
-        // Update hex string only if sliders changed and hex edit is not active
-        if (!hex_edit_active) {
-            snprintf(hexstring, hexlen, "%02x%02x%02x",
-                (int)std::round(combo_color2.r * 255.0f),
-                (int)std::round(combo_color2.g * 255.0f),
-                (int)std::round(combo_color2.b * 255.0f));
-        }
-
-        float hex_ratios[] = { 0.125f, 0.60f };
-        nk_layout_row(ctx, NK_DYNAMIC, 25, 2, hex_ratios);
-        nk_label(ctx, "Hex:", NK_TEXT_LEFT);
-
-        // Hex input field
-        if (nk_edit_string(ctx, NK_EDIT_FIELD, hexstring, &hexlen, hexlen, nk_filter_hex)) {
-            int rgb[3] = { 0, 0, 0 };
-            int chars_read = std::sscanf(hexstring, "%02x%02x%02x", &rgb[0], &rgb[1], &rgb[2]);
-            if (chars_read == 3) {
-                combo_color2.r = rgb[0] / 255.0f;
-                combo_color2.g = rgb[1] / 255.0f;
-                combo_color2.b = rgb[2] / 255.0f;
-                hex_edit_active = false; // Editing done
-            }
-        }
-        else {
-            hex_edit_active = true; // Currently editing
-        }
-        nk_combo_end(ctx);
-    }
-
-    //nk_group_end(ctx);
-}
 
 static int overview(struct nk_context *ctx)
 {
@@ -471,7 +399,7 @@ static int overview(struct nk_context *ctx)
                     }
                     nk_combo_end(ctx);
                 }
-                ColorPicker22(ctx);
+                
                 /* progressbar combobox */
                 sum = prog_a + prog_b + prog_c + prog_d;
                 sprintf(buffer, "%lu", sum);
