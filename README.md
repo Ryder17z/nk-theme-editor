@@ -1,6 +1,6 @@
 # nk-theme-editor
 
-A theme editor for [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear), an intermediate-mode c++ gui library (single header only)
+A theme editor for [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear), an intermediate mode c gui library (single header only)
 
 (This project is a WIP - ripped from an unreleased project)
 
