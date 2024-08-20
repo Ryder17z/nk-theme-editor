@@ -4,6 +4,7 @@ A theme editor for Nuklear, an intermediate-mode c++ gui library (headerless)
 
 (This project is a WIP - ripped from an unreleased project)
 
+
 ![screenshot](nk-theme-editor.png)
 
 ## prerequisites
@@ -41,3 +42,6 @@ To build XCode project run
 
 `cmake -S ./ -B ./build -GXcode`
 
+## Examples
+
+![examples](example-themes.png)
