@@ -46,7 +46,6 @@ target_sources(${PROJECT_NAME}
 "gui/themes.hpp"
 "io/portini.h"
 "main.hpp"
-"misc/color_funcs.hpp"
 "tinyfd/tinyfiledialogs.c"
 "tinyfd/tinyfiledialogs.h"
 # [[[end]]]
