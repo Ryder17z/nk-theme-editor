@@ -2,6 +2,8 @@
 
 A theme editor for Nuklear, an intermediate-mode c++ gui library (headerless)
 
+![screenshot](nk-theme-editor.png)
+
 ## prerequisites
 
 - CMake 3.21.0 and above
