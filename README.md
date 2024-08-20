@@ -1,6 +1,7 @@
 # nk-theme-editor
 
 A theme editor for Nuklear, an intermediate-mode c++ gui library (headerless)
+(WIP - ripped from an unreleased project)
 
 ![screenshot](nk-theme-editor.png)
 
