@@ -22,8 +22,6 @@ To build the executable run the following commands:
 * open .sln inside build folder
 * Build Project
 
-??
-
 ### Linux
 
 ```
