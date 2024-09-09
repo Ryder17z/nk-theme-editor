@@ -1,5 +1,7 @@
 //#include "../gui/nuklear.h"
 
+// This is a copy of the Nuklear demo project which spawns a popup all sorts of widgets that are available by default.
+
 static int overview(struct nk_context *ctx)
 {
     /* window flags */
