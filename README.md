@@ -11,7 +11,7 @@ A theme editor for [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear), an i
 
 - CMake 3.21.0 and above
 - C17 and C++17 capable compiler
-- Optional: Python and module "[cogapp](http://nedbatchelder.com/code/cog/))" for 'updating target_sources' in /src/CMakeLists.txt
+- Optional: Python and module "[cogapp](http://nedbatchelder.com/code/cog/)" for 'updating target_sources' in /src/CMakeLists.txt
 
 ## build
 
